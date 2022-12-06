@@ -32,7 +32,7 @@ const Details = () => {
   return (
     <>
       <h1>Hello Details</h1>
-      <button onClick={() => navigate('/home')}>go to home</button>
+      <button onClick={() => navigate('/')}>go to home</button>
     </>
   );
 };
@@ -51,7 +51,7 @@ export const App = ({Router = MemoryRouter, onNavigate = () => {}}: Props) => (
     <Router>
       <Box onNavigate={onNavigate}>
         <Routes>
-          <Route path="/home" element={<Home />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/details" element={<Details />}></Route>
         </Routes>
       </Box>
