@@ -3,8 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 import {App} from './App'
 
-
-
 export const mount = (element: HTMLElement | null, router?: typeof BrowserRouter ) => {
   if(element) {
     const root =  ReactDOM.createRoot(element!);
