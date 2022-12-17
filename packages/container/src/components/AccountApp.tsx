@@ -1,15 +1,11 @@
 import { useEffect, useRef } from 'react'
-import {mount} from 'home/HomeApp'
+import {mount} from 'account/AccountApp'
 
-export const HomeApp = () => {
+export const AccountApp = () => {
   const ref = useRef(null);
   useEffect(() => {
     mount(ref.current)
   }, [])
-
-  const onNavigate = () => {
-    
-  }
 
   return (
     <div ref={ref} />

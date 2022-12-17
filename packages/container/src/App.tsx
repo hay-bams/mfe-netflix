@@ -5,7 +5,8 @@ import {HomeApp} from './components/HomeApp';
 export const App = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/home" element={<HomeApp />} />
+      <Route path="/" element={<HomeApp  />} />
+      <Route path="/account" element={<HomeApp />} />
     </Routes>
   </BrowserRouter>
 );

@@ -19,20 +19,21 @@ interface BoxProps {
   onNavigate: (val: Location) => void;
 }
 
-const Home = () => {
+const Account = () => {
   const navigate = useNavigate();
   return (
     <>
-      <h1>Hello User Home</h1>
+      <h1>Hello User Account</h1>
       <button onClick={() => navigate('/details')}> go to details</button>
     </>
   );
 };
+
 const Details = () => {
   const navigate = useNavigate();
   return (
     <>
-      <h1>Hello Home Details</h1>
+      <h1>Hello Account Details</h1>
       <button onClick={() => navigate('/')}>go to home</button>
     </>
   );
@@ -52,7 +53,7 @@ export const App = ({Router = MemoryRouter, onNavigate = () => {}}: Props) => (
     <Router>
       <Box onNavigate={onNavigate}>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Account />}></Route>
           <Route path="/details" element={<Details />}></Route>
         </Routes>
       </Box>

@@ -10,18 +10,13 @@ export const mount = (
 ) => {
   if (element) {
     const root = ReactDOM.createRoot(element!);
-    root.render(
-      <App
-        Router={router}
-        onNavigate={(val) => {
-          onNavigate(val);
-        }}
-      />,
-    );
+    root.render(<App Router={router} onNavigate={(val) => {
+      onNavigate(val)
+    }} />);
   }
 };
 
 if (process.env.NODE_ENV === 'development') {
-  const devRoot = document.getElementById('_home-dev-root');
+  const devRoot = document.getElementById('_account-dev-root');
   mount(devRoot);
 }
