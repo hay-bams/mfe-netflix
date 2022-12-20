@@ -18,11 +18,9 @@ declare module 'home/HomeApp' {
 }
 
 declare module 'account/AccountApp' {
-  import {BrowserRouter, Location} from 'react-router-dom';
   export function mount(
     element: HTMLElement | null,
-    onNavigate?: (location: Location) => void,
-    router?: typeof BrowserRouter,
-  ): void;
+    options?: MountOptions,
+  ): MountResult;
   // export = {mount}
 }

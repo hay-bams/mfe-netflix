@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
       <h1>Hello Account</h1>
-      <button onClick={() => navigate('/details')}> go to account details</button>
+      <button onClick={() => navigate('/account/details')}> go to account details</button>
     </>
   );
 };
@@ -21,7 +21,7 @@ const Details = () => {
 
 export const App = () => (
   <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/details" element={<Details />} />
+    <Route path="/account" element={<Home />} />
+    <Route path="/account/details" element={<Details />} />
   </Routes>
 );

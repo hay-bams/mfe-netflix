@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import {RouterProvider, createMemoryRouter} from 'react-router-dom';
+import {RouterProvider, createBrowserRouter, createMemoryRouter} from 'react-router-dom';
 import {RouterState} from '@remix-run/router';
 
 import {RemixRouter} from './initRoutes/initRoutes.types';
@@ -11,7 +11,7 @@ interface MountOptions {
 }
 
 export const mount = (element: HTMLElement | null, options?: MountOptions) => {
-  const router = options?.router || createRouter(createMemoryRouter);
+  const router = options?.router || createRouter(createBrowserRouter);
   const onNavigate = options?.onNavigate || (() => {});
 
   if (element) {
