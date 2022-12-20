@@ -14,7 +14,7 @@ const Details = () => {
   return (
     <>
       <h1>Hello Account Details</h1>
-      <button onClick={() => navigate('/')}>go to account</button>
+      <button onClick={() => navigate('/account')}>go to account</button>
     </>
   );
 };
