@@ -1,23 +1,4 @@
-import React, {ReactNode, useEffect} from 'react';
-import {
-  Route,
-  BrowserRouter,
-  MemoryRouter,
-  Routes,
-  useLocation,
-  useNavigate,
-  Location,
-} from 'react-router-dom';
-
-interface Props {
-  Router?: typeof BrowserRouter;
-  onNavigate?: (val: Location) => void;
-}
-
-interface BoxProps {
-  children: ReactNode;
-  onNavigate: (val: Location) => void;
-}
+import {Route, Routes, useNavigate} from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -38,24 +19,9 @@ const Details = () => {
   );
 };
 
-const Box = ({children, onNavigate}: BoxProps) => {
-  const location = useLocation();
-  useEffect(() => {
-    onNavigate(location);
-    // console.log(location, '$$$$$$$');
-  }, [location]);
-  return <>{children}</>;
-};
-
-export const App = ({Router = MemoryRouter, onNavigate = () => {}}: Props) => (
-  <div>
-    <Router>
-      <Box onNavigate={onNavigate}>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/details" element={<Details />}></Route>
-        </Routes>
-      </Box>
-    </Router>
-  </div>
+export const App = () => (
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/details" element={<Details />} />
+  </Routes>
 );

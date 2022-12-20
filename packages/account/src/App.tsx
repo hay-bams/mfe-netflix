@@ -12,11 +12,13 @@ import {
 interface Props {
   Router?: typeof BrowserRouter;
   onNavigate?: (val: Location) => void;
+  getCurrentRoute?: (val: any) => void;
 }
 
 interface BoxProps {
   children: ReactNode;
   onNavigate: (val: Location) => void;
+  getCurrentRoute: (val: any) => void;
 }
 
 const Account = () => {
@@ -39,22 +41,30 @@ const Details = () => {
   );
 };
 
-const Box = ({children, onNavigate}: BoxProps) => {
+const Box = ({children, onNavigate, getCurrentRoute}: BoxProps) => {
   const location = useLocation();
+  const navigate = useNavigate()
   useEffect(() => {
     onNavigate(location);
+    getCurrentRoute(location);
+    // navigate(location.pathname)
+    console.log(location, '$$$$$$$$$')
     // console.log(location, '$$$$$$$');
   }, [location]);
   return <>{children}</>;
 };
 
-export const App = ({Router = MemoryRouter, onNavigate = () => {}}: Props) => (
+export const App = ({
+  Router = MemoryRouter,
+  onNavigate = () => {},
+  getCurrentRoute = () => {},
+}: Props) => (
   <div>
     <Router>
-      <Box onNavigate={onNavigate}>
+      <Box onNavigate={onNavigate} getCurrentRoute={getCurrentRoute}>
         <Routes>
-          <Route path="/" element={<Account />}></Route>
           <Route path="/details" element={<Details />}></Route>
+          <Route path="/" element={<Account />}></Route>
         </Routes>
       </Box>
     </Router>

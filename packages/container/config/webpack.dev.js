@@ -3,7 +3,7 @@ const path = require('path');
 
 const {merge} = require('webpack-merge');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+
 
 const packageJson = require('../package.json');
 
@@ -20,7 +20,6 @@ const devConfig = {
     hot: true
   },
   plugins: [
-    new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
       name: 'container',
       remotes: {

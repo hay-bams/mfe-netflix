@@ -8,15 +8,21 @@ export const mount = (
   onNavigate: (val: Location) => void = () => {},
   router?: typeof BrowserRouter,
 ) => {
+  console.log('account','--------')
+
+
   if (element) {
     const root = ReactDOM.createRoot(element!);
     root.render(<App Router={router} onNavigate={(val) => {
       onNavigate(val)
-    }} />);
+    }}  getCurrentRoute={() => {}}/>);
   }
 };
 
 if (process.env.NODE_ENV === 'development') {
   const devRoot = document.getElementById('_account-dev-root');
-  mount(devRoot);
+  if(devRoot) {
+    mount(devRoot);
+  }
+
 }
