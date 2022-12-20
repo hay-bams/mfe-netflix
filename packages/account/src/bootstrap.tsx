@@ -1,28 +1,39 @@
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter, Location} from 'react-router-dom';
+import {RouterProvider, createMemoryRouter} from 'react-router-dom';
+import {RouterState} from '@remix-run/router';
 
-import {App} from './App';
+import {RemixRouter} from './initRoutes/initRoutes.types';
+import {createRouter} from './initRoutes';
 
-export const mount = (
-  element: HTMLElement | null,
-  onNavigate: (val: Location) => void = () => {},
-  router?: typeof BrowserRouter,
-) => {
-  console.log('account','--------')
+interface MountOptions {
+  onNavigate?: (val: RouterState) => void;
+  router: RemixRouter;
+}
 
+export const mount = (element: HTMLElement | null, options?: MountOptions) => {
+  const router = options?.router || createRouter(createMemoryRouter);
+  const onNavigate = options?.onNavigate || (() => {});
 
   if (element) {
     const root = ReactDOM.createRoot(element!);
-    root.render(<App Router={router} onNavigate={(val) => {
-      onNavigate(val)
-    }}  getCurrentRoute={() => {}}/>);
+    root.render(<RouterProvider router={router} />);
   }
+
+  router.subscribe(onNavigate);
+
+  return {
+    onParentNavigate({pathname: nextPathname}: {pathname: string}) {
+      const {pathname} = router.state.location;
+      if (pathname !== nextPathname) {
+        router.navigate(nextPathname);
+      }
+    },
+  };
 };
 
 if (process.env.NODE_ENV === 'development') {
   const devRoot = document.getElementById('_account-dev-root');
-  if(devRoot) {
+  if (devRoot) {
     mount(devRoot);
   }
-
 }

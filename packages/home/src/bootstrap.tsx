@@ -1,15 +1,7 @@
 import ReactDOM from 'react-dom/client';
-import {
-  BrowserRouter,
-  Location,
-  RouterProvider,
-  createBrowserRouter,
-  createMemoryRouter,
-} from 'react-router-dom';
+import {RouterProvider, createMemoryRouter} from 'react-router-dom';
 import {RouterState} from '@remix-run/router';
-import history from 'history';
 
-import {App} from './App';
 import {RemixRouter} from './initRoutes/initRoutes.types';
 import {createRouter} from './initRoutes';
 
