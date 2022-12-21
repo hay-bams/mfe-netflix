@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import {BellIcon, MagnifyingGlassIcon} from '@heroicons/react/24/solid';
 import {Link} from 'react-router-dom';
+import {useEffect, useState} from 'react';
 
-const HeaderStyled = styled.header`
+import { HeaderStyledProps } from './Header.types';
+
+const HeaderStyled = styled.header<HeaderStyledProps>`
   position: fixed;
   top: 0;
   z-index: 50;
@@ -13,6 +16,7 @@ const HeaderStyled = styled.header`
   padding-inline: 1rem;
   padding-block: 1rem;
   transition: all;
+  background: ${props => props.isScrolled && '#141414'};
 
   @media only screen and (min-width: 992px) {
     padding-inline: 2.5rem;
@@ -97,36 +101,51 @@ const LinkImage = styled.img`
   border-radius: 0.25rem;
 `;
 
-export const Header = () => (
-  <HeaderStyled>
-    <LeftHeaderContainer>
-      <Link to="/">
-        <Logo src="https://rb.gy/ulxxee" width={100} />
-      </Link>
-      <ListContainer>
-        <ListItem>Home</ListItem>
-        <ListItem>Tv Shows</ListItem>
-        <ListItem>Movies</ListItem>
-        <ListItem>New & Popular</ListItem>
-        <ListItem>My List</ListItem>
-      </ListContainer>
-    </LeftHeaderContainer>
+export const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
 
-    <RightHeaderContainer>
-      <MagnifyingGlassContainer>
-        <MagnifyingGlassIcon />
-      </MagnifyingGlassContainer>
-      <KidsParagraph>Kids</KidsParagraph>
-      <BellIconContainer>
-        <BellIcon />
-      </BellIconContainer>
-      <Link to="/account">
-        <LinkImage
-          // onClick={() => navigate('/account')}
-          src="https://rb.gy/g1pwyx"
-          alt=""
-        />
-      </Link>
-    </RightHeaderContainer>
-  </HeaderStyled>
-);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  return (
+    <HeaderStyled isScrolled={isScrolled}>
+      <LeftHeaderContainer>
+        <Link to="/">
+          <Logo src="https://rb.gy/ulxxee" width={100} />
+        </Link>
+        <ListContainer>
+          <ListItem>Home</ListItem>
+          <ListItem>Tv Shows</ListItem>
+          <ListItem>Movies</ListItem>
+          <ListItem>New & Popular</ListItem>
+          <ListItem>My List</ListItem>
+        </ListContainer>
+      </LeftHeaderContainer>
+
+      <RightHeaderContainer>
+        <MagnifyingGlassContainer>
+          <MagnifyingGlassIcon />
+        </MagnifyingGlassContainer>
+        <KidsParagraph>Kids</KidsParagraph>
+        <BellIconContainer>
+          <BellIcon />
+        </BellIconContainer>
+        <Link to="/account">
+          <LinkImage src="https://rb.gy/g1pwyx" alt="" />
+        </Link>
+      </RightHeaderContainer>
+    </HeaderStyled>
+  );
+};

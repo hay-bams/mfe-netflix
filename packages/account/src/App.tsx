@@ -1,14 +1,6 @@
 import {Route, Routes, useNavigate} from 'react-router-dom';
 
-const Home = () => {
-  const navigate = useNavigate();
-  return (
-    <>
-      <h1>Hello Account</h1>
-      <button onClick={() => navigate('/account/details')}> go to account details</button>
-    </>
-  );
-};
+const Home = () => <div />;
 const Details = () => {
   const navigate = useNavigate();
   return (
@@ -21,6 +13,7 @@ const Details = () => {
 
 export const App = () => (
   <Routes>
+    <Route path="/" element={<Home />} />
     <Route path="/account" element={<Home />} />
     <Route path="/account/details" element={<Details />} />
   </Routes>

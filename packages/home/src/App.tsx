@@ -1,14 +1,6 @@
 import {Route, Routes, useNavigate} from 'react-router-dom';
 
-const Home = () => {
-  const navigate = useNavigate();
-  return (
-    <>
-      <h1>Hello User Home</h1>
-      <button onClick={() => navigate('/details')}> go to details</button>
-    </>
-  );
-};
+const Home = () => <div />;
 const Details = () => {
   const navigate = useNavigate();
   return (
