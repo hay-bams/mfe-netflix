@@ -3,7 +3,6 @@ import {RouterProvider} from 'react-router-dom';
 
 import {router} from '@/routesInit';
 
-import { App } from './App';
 
 const element = document.getElementById('root');
 
