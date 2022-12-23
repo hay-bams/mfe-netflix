@@ -47,21 +47,6 @@ const MovieTitle = styled.h1`
   }
 `;
 
-const BannerImageConntainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 95vh;
-  width: 100vw;
-  z-index: -10;
-`;
-
-const BannerImage = styled.img`
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-`;
-
 const MovieOverview = styled.div`
   max-width: 20rem;
   font-size: 0.75rem;
@@ -80,6 +65,21 @@ const MovieOverview = styled.div`
     font-size: 1.5rem;
     line-height: 2rem;
   }
+`;
+
+const BannerImageConntainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 95vh;
+  width: 100vw;
+  z-index: -10;
+`;
+
+const BannerImage = styled.img`
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 `;
 
 const ButtonContainer = styled.div`
@@ -112,6 +112,11 @@ const BannerButton = styled.button`
   }
 `;
 
+const PlayButton = styled(BannerButton)`
+  background: #fff;
+  color: #000;
+`;
+
 const PlayIcon = styled(FaPlay)`
   height: 1rem;
   width: 1rem;
@@ -123,6 +128,11 @@ const PlayIcon = styled(FaPlay)`
   }
 `;
 
+const MoreInfoButton = styled(BannerButton)`
+  background: hsla(0, 0%, 50%, 0.7);
+  color: #fff;
+`;
+
 const MoreInfoIcon = styled(InformationCircleIcon)`
   height: 1.25rem;
   width: 1.25rem;
@@ -132,16 +142,6 @@ const MoreInfoIcon = styled(InformationCircleIcon)`
     height: 2rem;
     width: 2rem;
   }
-`;
-
-const PlayButton = styled(BannerButton)`
-  background: #fff;
-  color: #000;
-`;
-
-const MoreInfoButton = styled(BannerButton)`
-  background: hsla(0, 0%, 50%, 0.7);
-  color: #fff;
 `;
 
 export const Banner = ({netflixOriginals}: Props) => {
