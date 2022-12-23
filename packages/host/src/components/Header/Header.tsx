@@ -29,7 +29,7 @@ const LeftHeaderContainer = styled.div`
   align-items: center;
 
   & > * + * {
-    margin-left: 0.5rem; //  space-x-2
+    margin-left: 0.5rem;
     @media only screen and (min-width: 768px) {
       margin-left: 2.5rem;
     }
@@ -54,7 +54,7 @@ const ListContainer = styled.ul`
 
 const ListItem = styled.li`
   cursor: pointer;
-  font-size: 0.875rem; // text-sm
+  font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 300;
   color: #e5e5e5;
@@ -77,7 +77,7 @@ const RightHeaderContainer = styled.div`
 
 const MagnifyingGlassContainer = styled.div`
   display: none;
-  width: 1.5rem; // w-6
+  width: 1.5rem;
   height: 1.5rem;
   @media only screen and (min-width: 640px) {
     display: inline-block;
