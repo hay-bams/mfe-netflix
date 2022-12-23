@@ -1,9 +1,10 @@
 import ReactDOM from 'react-dom/client';
-import {RouterProvider, createMemoryRouter} from 'react-router-dom';
+import {createMemoryRouter} from 'react-router-dom';
 import {RouterState} from '@remix-run/router';
 
 import {RemixRouter} from './initRoutes/initRoutes.types';
 import {createRouter} from './initRoutes';
+import {App} from './App';
 
 interface MountOptions {
   onNavigate?: (val: RouterState) => void;
@@ -16,7 +17,7 @@ export const mount = (element: HTMLElement | null, options?: MountOptions) => {
 
   if (element) {
     const root = ReactDOM.createRoot(element!);
-    root.render(<RouterProvider router={router} />);
+    root.render(<App router={router} />);
   }
   router.subscribe(onNavigate);
   return {

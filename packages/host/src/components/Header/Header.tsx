@@ -18,7 +18,7 @@ const HeaderStyled = styled.header<HeaderStyledProps>`
   transition: all;
   background: ${props => props.isScrolled && '#141414'};
 
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 1024px) {
     padding-inline: 2.5rem;
     padding-block: 1.5rem;
   }
@@ -86,7 +86,7 @@ const MagnifyingGlassContainer = styled.div`
 
 const KidsParagraph = styled.div`
   display: none;
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 1024px) {
     display: inline;
   }
 `;

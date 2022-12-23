@@ -12,7 +12,7 @@ const AppContainer = styled.div`
   height: 100vh;
   background-image: linear-gradient(to bottom, rgba(17, 24, 39, 0.1), #010511);
   
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: 1024px) {
     height: 140vh;
   }
 `;

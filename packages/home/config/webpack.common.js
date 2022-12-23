@@ -1,13 +1,15 @@
 /* eslint-disable no-undef */
-const path = require('path')
+const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.ts'),
-  resolve: { // resolve import with these extensions
+  resolve: {
+    // resolve import with these extensions
     extensions: ['.tsx', '.ts', '.js'],
     plugins: [
       new TsconfigPathsPlugin({
@@ -45,6 +47,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', './public/index.html'),
     }),
+    new Dotenv()
   ],
   stats: 'errors-only',
-}
+};

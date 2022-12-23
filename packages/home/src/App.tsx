@@ -1,19 +1,11 @@
-import {Route, Routes, useNavigate} from 'react-router-dom';
+import {RouterProvider} from 'react-router-dom';
 
-const Home = () => <div />;
-const Details = () => {
-  const navigate = useNavigate();
-  return (
-    <>
-      <h1>Hello Home Details</h1>
-      <button onClick={() => navigate('/')}>go to home</button>
-    </>
-  );
-};
+import {RemixRouter} from './initRoutes/initRoutes.types';
 
-export const App = () => (
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/details" element={<Details />} />
-  </Routes>
-);
+import '@/styles/index.css';
+
+interface Props {
+  router: RemixRouter;
+}
+
+export const App = ({router}: Props) => <RouterProvider router={router} />;
