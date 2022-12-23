@@ -169,9 +169,6 @@ export const Banner = ({netflixOriginals}: Props) => {
       <ButtonContainer>
         <PlayButton>
           <PlayIcon />
-          {/* <IconContainer>
-            <FaPlay />
-          </IconContainer> */}
           Play
         </PlayButton>
         <MoreInfoButton>
@@ -183,17 +180,3 @@ export const Banner = ({netflixOriginals}: Props) => {
   );
 };
 
-/**
- * 
- * 
- * 
- * 
- * // @media only screen and (min-width: 768px) {
-//   padding-top: 0.625rem;
-// padding-bottom: 0.625rem;
-// padding-left: 2rem;
-// padding-right: 2rem; 
-// font-size: 1.25rem;
-// line-height: 1.75rem;
-// }
- */
