@@ -5,6 +5,7 @@ import {AllMovies} from './Home.types';
 
 import {getAllMovies} from '@/api/movies';
 import {Banner} from '@/components/Banner';
+import {Row} from '@/components/Row/Row';
 
 const Main = styled.main`
   position: relative;
@@ -18,8 +19,11 @@ const Main = styled.main`
     }
   }
 `;
-const Section = styled.section``;
-const Row = styled.div``;
+const Section = styled.section`
+  & > * + * {
+    margin-top: 6rem;
+  }
+`;
 
 export const Home = () => {
   const {
@@ -36,7 +40,16 @@ export const Home = () => {
   return (
     <Main>
       <Banner netflixOriginals={netflixOriginals} />
-    <Section />
+
+      <Section>
+        <Row title="Trending Now" movies={trendingNow} />
+        <Row title="Top Rated" movies={topRated} />
+        <Row title="Action Thrillers" movies={actionMovies} />
+        <Row title="Comedies" movies={comedyMovies} />
+        <Row title="Scary Movies" movies={horrorMovies} />
+        <Row title="Romantic Movies" movies={romanceMovies} />
+        <Row title="Documentaries" movies={documentaries} />
+      </Section>
     </Main>
   );
 };

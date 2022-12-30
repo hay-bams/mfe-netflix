@@ -1,0 +1,1 @@
+export type RowLeftIconStyledProps = Record<'$isMoved', boolean>
