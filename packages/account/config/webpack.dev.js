@@ -3,6 +3,8 @@ const path = require('path');
 
 const { merge } = require('webpack-merge');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 const packageJson = require('../package.json');
 
@@ -13,6 +15,13 @@ const devConfig = {
   output: {
     publicPath: 'http://localhost:8082/',
   },
+  resolve: {
+    plugins: [
+      new TsconfigPathsPlugin({
+        extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
+      }),
+    ],
+  },
   devServer: {
     port: 8082,
     historyApiFallback: true,
@@ -20,6 +29,7 @@ const devConfig = {
   },
   
   plugins: [
+    new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
       name: 'account',
       filename: 'remoteEntry.js',

@@ -10,8 +10,16 @@ import '@/styles/index.css';
 const AppContainer = styled.div`
   position: relative;
   height: 100vh;
-  background-image: linear-gradient(to bottom, rgba(17, 24, 39, 0.1), #010511);
-  
+  background-image: linear-gradient(
+    to bottom,
+    rgba(20, 20, 20, 0) 0,
+    rgba(20, 20, 20, 0.15) 15%,
+    rgba(20, 20, 20, 0.35) 29%,
+    rgba(20, 20, 20, 0.58) 44%,
+    #141414 68%,
+    #141414 100%
+  );
+
   @media only screen and (min-width: 1024px) {
     height: 140vh;
   }

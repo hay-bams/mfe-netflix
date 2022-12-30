@@ -2,8 +2,6 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -11,11 +9,6 @@ module.exports = {
   resolve: {
     // resolve import with these extensions
     extensions: ['.tsx', '.ts', '.js'],
-    plugins: [
-      new TsconfigPathsPlugin({
-        extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
-      }),
-    ],
   },
   module: {
     rules: [
@@ -43,11 +36,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', './public/index.html'),
     }),
-    new Dotenv()
+    new Dotenv(),
   ],
   stats: 'errors-only',
 };

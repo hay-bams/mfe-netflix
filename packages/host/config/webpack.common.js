@@ -2,19 +2,12 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.ts'),
   resolve: {
     // resolve import with these extensions
     extensions: ['.tsx', '.ts', '.js'],
-    plugins: [
-      new TsconfigPathsPlugin({
-        extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
-      }),
-    ],
   },
   module: {
     rules: [
@@ -42,7 +35,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', './public/index.html'),
     }),
