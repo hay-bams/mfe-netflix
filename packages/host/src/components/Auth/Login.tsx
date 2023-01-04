@@ -64,11 +64,11 @@ const Form = styled.form`
   background: rgb(0 0 0/0.75);
   padding-block: 2.5rem;
   padding-inline: 1.5rem;
-  margin-top: 0;
 
   @media only screen and (min-width: 768px) {
     max-width: 28rem;
     padding-inline: 3.5rem;
+    margin-top: 0;
   }
 `;
 
