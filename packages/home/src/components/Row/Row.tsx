@@ -23,7 +23,6 @@ const RowContainer = styled.div`
       margin-top: 0.5rem;
     }
   };
-  
 `;
 
 const RowTitle = styled.h2`
@@ -110,9 +109,9 @@ export const Row = ({title, movies}: Props) => {
   const [isMoved, setIsMoved] = useState(false);
 
   const handleClick = (direction: string) => {
-   if(!isMoved) {
-    setIsMoved(true);
-   }
+    if (!isMoved) {
+      setIsMoved(true);
+    }
     if (rowRef.current) {
       const {scrollLeft, clientWidth} = rowRef.current;
 
