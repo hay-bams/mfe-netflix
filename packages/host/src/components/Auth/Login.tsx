@@ -1,8 +1,15 @@
 import styled from 'styled-components';
+import {useState} from 'react';
+import {SubmitHandler, useForm} from 'react-hook-form';
 
 import {Input} from '@/components/Form/Input';
 import {Label} from '@/components/Form/Label';
-import {Button} from '@/components/Button/Button';
+import useAuth from '@/hooks/useAuth';
+
+interface Inputs {
+  email: string;
+  password: string;
+}
 
 const LoginContainer = styled.div`
   position: relative;
@@ -95,20 +102,43 @@ const SigninButton = styled.button`
 `;
 
 const SignupButton = styled.button`
- color: #fff;
- background: none;
- cursor: pointer;
- &:hover {
-  text-decoration: underline;
- }
+  color: #fff;
+  background: none;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const FootNote = styled.div`
   color: gray;
 `;
 
+const InputError = styled.p`
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: red;
+`;
+
 export const Login = () => {
-  console.log('#');
+  const [login, setLogin] = useState(false);
+  const {signIn, signUp} = useAuth();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: {errors},
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    console.log(data);
+    if (login) {
+      await signIn(data.email, data.password);
+    } else {
+      await signUp(data.email, data.password);
+    }
+  };
+  console.log(errors);
   return (
     <LoginContainer>
       <Background src="https://rb.gy/p2hphi" />
@@ -117,21 +147,43 @@ export const Login = () => {
         <Logo src="https://rb.gy/ek4j9f" />
       </LogoContainer>
 
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Heading>Sign In</Heading>
         <FormInputsContainer>
           <Label>
-            <Input placeholder="Email" type="email" />
+            <Input
+              placeholder="Email"
+              type="email"
+              required
+              {...register('email')}
+            />
+            {errors.email && (
+              <InputError>Please enter a valid email.</InputError>
+            )}
           </Label>
 
           <Label>
-            <Input placeholder="Password" type="password" />
+            <Input
+              placeholder="Password"
+              type="password"
+              required
+              {...register('password')}
+            />
+            {errors.password && (
+              <InputError>
+                Your password must contain between 4 and 60 characters.
+              </InputError>
+            )}
           </Label>
         </FormInputsContainer>
-        <SigninButton type="submit">Sign in</SigninButton>
+        <SigninButton type="submit" onClick={() => setLogin(true)}>
+          Sign in
+        </SigninButton>
         <FootNote>
           New to Netflix?
-          <SignupButton type="submit">Sign up now</SignupButton>
+          <SignupButton type="submit" onClick={() => setLogin(false)}>
+            Sign up now
+          </SignupButton>
         </FootNote>
       </Form>
     </LoginContainer>

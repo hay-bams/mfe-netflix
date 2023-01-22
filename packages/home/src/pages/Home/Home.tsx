@@ -6,6 +6,8 @@ import {AllMovies} from './Home.types';
 import {getAllMovies} from '@/api/movies';
 import {Banner} from '@/components/Banner';
 import {Row} from '@/components/Row/Row';
+import {useAppSelector} from '@/hooks/useAppSelector';
+import {Modal} from '@/components/Modal';
 
 const Main = styled.main`
   position: relative;
@@ -36,21 +38,26 @@ export const Home = () => {
     topRated,
     trendingNow,
   } = useLoaderData() as AllMovies;
-  // console.log(data, '^^^^^^^^');
-  return (
-    <Main>
-      <Banner netflixOriginals={netflixOriginals} />
+  const showModal = useAppSelector((state) => state.showModal);
 
-      <Section>
-        <Row title="Trending Now" movies={trendingNow} />
-        <Row title="Top Rated" movies={topRated} />
-        <Row title="Action Thrillers" movies={actionMovies} />
-        <Row title="Comedies" movies={comedyMovies} />
-        <Row title="Scary Movies" movies={horrorMovies} />
-        <Row title="Romantic Movies" movies={romanceMovies} />
-        <Row title="Documentaries" movies={documentaries} />
-      </Section>
-    </Main>
+  console.log(showModal, '?????');
+  return (
+    <>
+      <Main>
+        <Banner netflixOriginals={netflixOriginals} />
+
+        <Section>
+          <Row title="Trending Now" movies={trendingNow} />
+          <Row title="Top Rated" movies={topRated} />
+          <Row title="Action Thrillers" movies={actionMovies} />
+          <Row title="Comedies" movies={comedyMovies} />
+          <Row title="Scary Movies" movies={horrorMovies} />
+          <Row title="Romantic Movies" movies={romanceMovies} />
+          <Row title="Documentaries" movies={documentaries} />
+        </Section>
+      </Main>
+      <Modal open={true}>{null}</Modal>
+    </>
   );
 };
 

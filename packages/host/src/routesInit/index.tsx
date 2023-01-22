@@ -2,12 +2,21 @@
 import {createBrowserRouter, createMemoryRouter} from 'react-router-dom';
 
 import {App} from '@/App';
+import {AuthProvider} from '@/hooks/useAuth';
 
 export const createRouter = (
   init: typeof createBrowserRouter | typeof createMemoryRouter,
 ) => {
-  console.log('@@@@@');
-  const router = init([{path: '*', element: <App />}]);
+  const router = init([
+    {
+      path: '*',
+      element: (
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      ),
+    },
+  ]);
 
   return router;
 };

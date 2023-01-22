@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import styled from 'styled-components';
 
 interface Props extends React.HTMLAttributes<HTMLInputElement> {
@@ -20,6 +21,14 @@ const InputStyled = styled.input`
   }
 `;
 
-export const Input = ({type = 'text', ...rest}: Props) => (
-  <InputStyled type={type} {...rest} />
-);
+// export const Input = ({type = 'text', ...rest}: Props) => (
+//   <InputStyled type={type} {...rest} />
+// );
+
+
+
+export const Input = forwardRef<any, Props>(({type = 'text', ...rest}, ref) => (
+  <InputStyled type={type} {...rest} ref={ref} />
+));
+
+Input.displayName = 'Input'
