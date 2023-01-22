@@ -6,9 +6,14 @@ interface ModalSizeDimensionValue {
   width: string
 }
 
+export interface ModalStyledProps {
+  size: ModalSizes;
+  background?: string
+}
+
 export type ModalSizeDimension = Record<ModalSizes, ModalSizeDimensionValue>
 
-export type ModalStyledProps = ModalStyledSizes;
+// export type ModalStyledProps = ModalStyledSizes;
 
 export type ModalOverflowProps = 'outside' | 'inside'
 

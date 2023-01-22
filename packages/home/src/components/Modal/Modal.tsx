@@ -30,6 +30,7 @@ interface Props {
   overlayBlur?: number;
   overflow?: ModalOverflowProps;
   animationDuration?: number;
+  background?: string
 }
 
 const ModalWrapper = styled.div`
@@ -38,7 +39,7 @@ const ModalWrapper = styled.div`
   inset: 0;
   height: 100vh;
   width: 100vw;
-  z-index: 1;
+  z-index: 51;
 `;
 
 const ModalInnerWrapper = styled.div<ModalInnerWrapperProps>`
@@ -53,7 +54,7 @@ const ModalInnerWrapper = styled.div<ModalInnerWrapperProps>`
 
 const ModalContainer = styled.div<ModalStyledProps>`
   padding: 20px;
-  background: #fff;
+  background: ${(props) => props.background || '#fff'};
   min-height: 0px;
   width: ${(props) =>
     modalSizes[props.size] ? modalSizes[props.size].width : props.size};
@@ -84,6 +85,7 @@ const ModalBody = styled.div<ModalBodyProps>`
       ${props.overflow === 'inside' && 'max-height: calc(100vh - 185px)'}
     `};
   padding-bottom: 40px;
+  position: relative;
 `;
 
 export const Modal = ({
@@ -99,6 +101,7 @@ export const Modal = ({
   overlayColor,
   overlayOpacity,
   animationDuration = 300,
+  background 
 }: Props) => {
   const modalRef = useRef<any>(null);
   useClickOutside(modalRef, onClose);
@@ -129,7 +132,7 @@ export const Modal = ({
               centered={centered}
               overflow={overflow}
               show={open}>
-              <ModalContainer size={size} ref={modalRef}>
+              <ModalContainer size={size} ref={modalRef} background={background}>
                 <ModalTitleContainer title={title}>
                   {title ? <ModalTitle>{title}</ModalTitle> : null}
                   {withCloseButton ? (

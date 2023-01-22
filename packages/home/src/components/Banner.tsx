@@ -5,6 +5,10 @@ import {InformationCircleIcon} from '@heroicons/react/24/solid';
 
 import {Movie} from '@/typings';
 import {baseUrl} from '@/constants/movie';
+import {useAppDispatch} from '@/hooks/useAppDispatch';
+import {showModal} from './Modal';
+import {useAppSelector} from '@/hooks/useAppSelector';
+import {setCurrentMovie} from './Row/moviesSlice';
 
 interface Props {
   netflixOriginals: Movie[];
@@ -115,6 +119,7 @@ const BannerButton = styled.button`
 const PlayButton = styled(BannerButton)`
   background: #fff;
   color: #000;
+  cursor: pointer;
 `;
 
 const PlayIcon = styled(FaPlay)`
@@ -131,6 +136,7 @@ const PlayIcon = styled(FaPlay)`
 const MoreInfoButton = styled(BannerButton)`
   background: hsla(0, 0%, 50%, 0.7);
   color: #fff;
+  cursor: pointer;
 `;
 
 const MoreInfoIcon = styled(InformationCircleIcon)`
@@ -145,6 +151,8 @@ const MoreInfoIcon = styled(InformationCircleIcon)`
 `;
 
 export const Banner = ({netflixOriginals}: Props) => {
+  const dispatch = useAppDispatch();
+  const currentMovie = useAppSelector((state) => state.movies.currentMovie);
   const [movie, setMovie] = useState<Movie | null>(null);
 
   useEffect(() => {
@@ -171,7 +179,11 @@ export const Banner = ({netflixOriginals}: Props) => {
           <PlayIcon />
           Play
         </PlayButton>
-        <MoreInfoButton>
+        <MoreInfoButton
+          onClick={() => {
+            dispatch(setCurrentMovie(movie));
+            dispatch(showModal(true));
+          }}>
           <MoreInfoIcon />
           More Info
         </MoreInfoButton>
@@ -179,4 +191,3 @@ export const Banner = ({netflixOriginals}: Props) => {
     </Container>
   );
 };
-

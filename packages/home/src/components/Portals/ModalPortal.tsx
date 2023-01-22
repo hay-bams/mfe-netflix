@@ -11,7 +11,6 @@ export const ModalPortal = ({children}: Props) => {
 
   useEffect(() => {
     portalRoot?.appendChild(modalRoot);
-
     return () => {
       portalRoot?.removeChild(modalRoot);
     };

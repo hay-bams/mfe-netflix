@@ -1,6 +1,7 @@
 import {RefObject, useEffect} from 'react';
 
 export const useClickOutside = (ref: RefObject<any>, action:() => void) => {
+  console.log('~~~~~')
   useEffect(() => {
     const evt = (e: Event) => {
       if (!ref.current) return;

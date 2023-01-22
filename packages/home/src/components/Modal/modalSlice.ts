@@ -1,13 +1,16 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = false;
+const initialState = {
+  show: false
+};
 
 export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
     showModal: (state, action) => {
-      state = action.payload;
+      console.log(action, '|||||')
+      state.show = action.payload;
     },
   },
 });

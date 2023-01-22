@@ -1,17 +1,21 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { DocumentData } from 'firebase/firestore'
+import {DocumentData} from 'firebase/firestore';
 
-import { Movie } from '@/typings';
+import {Movie} from '@/typings';
 
-const initialState: Movie | DocumentData | null  = null
+const initialState: {currentMovie: Movie | DocumentData | null} = {
+  currentMovie: null,
+};
 
 export const moviesSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
-    list: () => {},
+    setCurrentMovie: (state, action) => {
+      state.currentMovie = action.payload;
+    },
   },
 });
 
 export default moviesSlice.reducer;
-export const {list} = moviesSlice.actions;
+export const {setCurrentMovie} = moviesSlice.actions;

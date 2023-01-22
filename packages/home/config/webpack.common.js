@@ -54,23 +54,3 @@ module.exports = {
   ],
   stats: 'errors-only',
 };
-
-/**
- * 
- *  {
-        test: /\.(woff(2)?|eot|ttf|otf|)$/,
-        type: 'asset/inline',
-      },
-      {
-        test: /\.svg$/i,
-        type: 'asset',
-        resourceQuery: /url/, // *.svg?url
-      },
-      {
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
-        resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
-        use: ['@svgr/webpack'],
-      },
- * 
- */
